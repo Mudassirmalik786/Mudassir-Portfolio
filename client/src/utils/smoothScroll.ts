@@ -12,8 +12,9 @@ export const smoothScrollTo = (elementId: string, offset: number = 80) => {
 export const downloadResume = () => {
   // Create a link to the resume PDF
   const link = document.createElement('a');
-  link.href = '@assets/Resume_1750000481729.pdf';
+  link.href = '/attached_assets/Resume_1750000481729.pdf';
   link.download = 'Muhammad_Mudassir_Resume.pdf';
+  link.target = '_blank';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

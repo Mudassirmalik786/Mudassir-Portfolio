@@ -95,12 +95,12 @@ const SkillsSection = () => {
                         <span className="text-dark font-medium">{skill.name}</span>
                         <span className="text-gray-500">{skill.level}%</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
                         <motion.div
-                          className={`h-2 rounded-full skill-progress ${getColorClass(info.color)}`}
+                          className={`h-full rounded-full ${getColorClass(info.color)} shadow-sm`}
                           initial={{ width: 0 }}
                           animate={animateSkills ? { width: `${skill.level}%` } : { width: 0 }}
-                          transition={{ duration: 1.5, delay: (categoryIndex * 0.3) + (skillIndex * 0.1) }}
+                          transition={{ duration: 1.5, delay: (categoryIndex * 0.3) + (skillIndex * 0.1), ease: "easeOut" }}
                         />
                       </div>
                     </motion.div>
