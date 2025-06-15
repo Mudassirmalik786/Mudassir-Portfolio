@@ -114,10 +114,27 @@ const AboutSection = () => {
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                   >
                     <i className="fas fa-award text-accent mt-1"></i>
-                    <div>
-                      <p className="text-gray-700 font-medium">{cert.name}</p>
-                      <p className="text-sm text-gray-500">{cert.issuer}</p>
+                    <div className="flex-1">
+                      {cert.url ? (
+                        <a
+                          href={cert.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block hover:text-primary transition-colors duration-300"
+                        >
+                          <p className="text-gray-700 font-medium hover:underline">{cert.name}</p>
+                          <p className="text-sm text-gray-500">{cert.issuer}</p>
+                        </a>
+                      ) : (
+                        <div>
+                          <p className="text-gray-700 font-medium">{cert.name}</p>
+                          <p className="text-sm text-gray-500">{cert.issuer}</p>
+                        </div>
+                      )}
                     </div>
+                    {cert.url && (
+                      <i className="fas fa-external-link-alt text-gray-400 text-sm mt-1"></i>
+                    )}
                   </motion.div>
                 ))}
               </div>

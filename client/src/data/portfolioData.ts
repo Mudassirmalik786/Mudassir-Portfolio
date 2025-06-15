@@ -41,6 +41,7 @@ export interface Certification {
   name: string;
   issuer: string;
   year?: string;
+  url?: string;
 }
 
 export const skills: Skill[] = [
@@ -197,21 +198,25 @@ export const certifications: Certification[] = [
     id: 'frontend-webdev',
     name: 'Frontend Web Development Internship',
     issuer: 'WebDev Masters and ECC International',
+    url: 'https://www.linkedin.com/posts/muhammad-mudassir-870b8a261_webdevelopment-frontend-reactjs-activity-7237432299846270977-1zSD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEBspFQB2i8Epg-SoJWUoeY5ORP4G8jeuak',
   },
   {
     id: 'professional-voice',
     name: 'Finding Your Professional Voice: Confidence & Impact',
     issuer: 'Coursera',
+    url: 'https://coursera.org/share/50a96dae1793d4284c805e6a6798d7f8',
   },
   {
     id: 'beta-mlsa',
     name: 'Beta MLSA',
     issuer: 'Microsoft',
+    url: 'https://drive.google.com/file/d/15UN0Q0EIJHd4MK8FBU4aeGkiJ5DLqRfS/view?usp=sharing',
   },
   {
     id: 'sql-advanced',
     name: 'SQL Advanced',
     issuer: 'HackerRank',
+    url: 'https://www.hackerrank.com/certificates/f1c8700b01ea',
   },
 ];
 
