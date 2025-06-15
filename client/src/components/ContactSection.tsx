@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { personalInfo } from '../data/portfolioData';
 
@@ -40,9 +41,19 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Here you would typically send the form data to your backend
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send email using EmailJS
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Muhammad Mudassir',
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key'
+      );
       
       alert('Thank you for your message! I will get back to you soon.');
       setFormData({
@@ -52,7 +63,8 @@ const ContactSection = () => {
         message: '',
       });
     } catch (error) {
-      alert('There was an error sending your message. Please try again.');
+      console.error('EmailJS error:', error);
+      alert('There was an error sending your message. Please try again or contact me directly.');
     } finally {
       setIsSubmitting(false);
     }
