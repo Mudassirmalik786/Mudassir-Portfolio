@@ -114,7 +114,7 @@ const HeroSection = () => {
                 href={personalInfo.linkedIn}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-accent transition-colors duration-300 transform hover:scale-110"
+                className="text-white hover:text-gray-300 transition-colors duration-300 transform hover:scale-110"
               >
                 <i className="fab fa-linkedin text-2xl"></i>
               </a>
@@ -122,7 +122,7 @@ const HeroSection = () => {
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-accent transition-colors duration-300 transform hover:scale-110"
+                className="text-white hover:text-gray-300 transition-colors duration-300 transform hover:scale-110"
               >
                 <i className="fab fa-github text-2xl"></i>
               </a>
@@ -130,13 +130,13 @@ const HeroSection = () => {
                 href={personalInfo.hackerrank}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-accent transition-colors duration-300 transform hover:scale-110"
+                className="text-white hover:text-gray-300 transition-colors duration-300 transform hover:scale-110"
               >
                 <i className="fab fa-hackerrank text-2xl"></i>
               </a>
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="text-white hover:text-accent transition-colors duration-300 transform hover:scale-110"
+                className="text-white hover:text-gray-300 transition-colors duration-300 transform hover:scale-110"
               >
                 <i className="fas fa-envelope text-2xl"></i>
               </a>
