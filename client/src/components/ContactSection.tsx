@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { personalInfo } from '../data/portfolioData';
 
@@ -20,14 +19,37 @@ const ContactSection = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [errors, setErrors] = useState<Partial<FormData>>({});
 
-  // Initialize EmailJS
-  useEffect(() => {
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-    if (publicKey) {
-      emailjs.init(publicKey);
+  const validateField = (name: string, value: string) => {
+    switch (name) {
+      case 'name':
+        if (value.trim().length < 2) {
+          return 'Name must be at least 2 characters long';
+        }
+        if (!/^[a-zA-Z\s]+$/.test(value.trim())) {
+          return 'Name can only contain letters and spaces';
+        }
+        break;
+      case 'email':
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+          return 'Please enter a valid email address';
+        }
+        break;
+      case 'subject':
+        if (value.trim().length < 3) {
+          return 'Subject must be at least 3 characters long';
+        }
+        break;
+      case 'message':
+        if (value.trim().length < 10) {
+          return 'Message must be at least 10 characters long';
+        }
+        break;
     }
-  }, []);
+    return '';
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -35,14 +57,31 @@ const ContactSection = () => {
       ...prev,
       [name]: value,
     }));
+
+    // Clear error when user starts typing
+    if (errors[name as keyof FormData]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: '',
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      alert('Please fill in all fields');
+    // Validate all fields
+    const newErrors: Partial<FormData> = {};
+    
+    Object.entries(formData).forEach(([key, value]) => {
+      const error = validateField(key, value);
+      if (error) {
+        newErrors[key as keyof FormData] = error;
+      }
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
@@ -60,13 +99,16 @@ const ContactSection = () => {
       const result = await response.json();
 
       if (result.success) {
-        alert('Thank you for your message! I will get back to you soon.');
+        setShowSuccess(true);
         setFormData({
           name: '',
           email: '',
           subject: '',
           message: '',
         });
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => setShowSuccess(false), 5000);
       } else {
         alert(result.message || 'Failed to send message. Please try again.');
       }
@@ -189,10 +231,15 @@ const ContactSection = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${
+                      errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                    }`}
                     placeholder="Enter your name"
                     required
                   />
+                  {errors.name && (
+                    <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-dark font-medium mb-2">Email Address *</label>
@@ -201,10 +248,15 @@ const ContactSection = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${
+                      errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                    }`}
                     placeholder="Enter your email"
                     required
                   />
+                  {errors.email && (
+                    <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                  )}
                 </div>
               </div>
               
@@ -215,10 +267,15 @@ const ContactSection = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${
+                    errors.subject ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
                   placeholder="Enter subject"
                   required
                 />
+                {errors.subject && (
+                  <p className="mt-1 text-sm text-red-600">{errors.subject}</p>
+                )}
               </div>
               
               <div>
@@ -228,10 +285,15 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none ${
+                    errors.message ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
                   placeholder="Write your message here..."
                   required
                 />
+                {errors.message && (
+                  <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+                )}
               </div>
               
               <button
@@ -252,6 +314,40 @@ const ContactSection = () => {
                 )}
               </button>
             </form>
+            
+            {/* Success Message */}
+            {showSuccess && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg"
+              >
+                <div className="flex items-center">
+                  <div className="flex-shrink-0">
+                    <i className="fas fa-check-circle text-green-600 text-xl"></i>
+                  </div>
+                  <div className="ml-3">
+                    <h3 className="text-sm font-medium text-green-800">
+                      Message Sent Successfully!
+                    </h3>
+                    <div className="mt-1 text-sm text-green-700">
+                      Thank you for reaching out. I'll get back to you soon.
+                    </div>
+                  </div>
+                  <div className="ml-auto pl-3">
+                    <div className="-mx-1.5 -my-1.5">
+                      <button
+                        onClick={() => setShowSuccess(false)}
+                        className="inline-flex bg-green-50 rounded-md p-1.5 text-green-500 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
+                      >
+                        <i className="fas fa-times text-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </div>
