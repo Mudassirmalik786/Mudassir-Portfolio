@@ -54,9 +54,9 @@ const ContactSection = () => {
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       console.log('EmailJS Config:', { 
-        serviceId: serviceId ? 'Set' : 'Missing', 
-        templateId: templateId ? 'Set' : 'Missing',
-        publicKey: publicKey ? 'Set' : 'Missing'
+        serviceId: serviceId ? serviceId : 'Missing', 
+        templateId: templateId ? templateId : 'Missing',
+        publicKey: publicKey ? publicKey.substring(0, 10) + '...' : 'Missing'
       });
 
       if (!serviceId || !templateId || !publicKey) {
