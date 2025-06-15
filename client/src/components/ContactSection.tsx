@@ -37,7 +37,7 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -46,41 +46,28 @@ const ContactSection = () => {
       return;
     }
 
-    setIsSubmitting(true);
+    // Create mailto link with form data
+    const subject = encodeURIComponent(formData.subject);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    );
     
-    try {
-      // Use Formspree - works with all domains including development
-      const response = await fetch('https://formspree.io/f/nm1267704@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        }),
-      });
-
-      if (response.ok) {
-        alert('Thank you for your message! I will get back to you soon.');
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: '',
-        });
-      } else {
-        throw new Error('Form submission failed');
-      }
-    } catch (error) {
-      console.error('Contact form error:', error);
-      alert('There was an error sending your message. Please try again later.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    const mailtoLink = `mailto:nm1267704@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Clear form and show success message
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    });
+    
+    alert('Thank you! Your email client will open with a pre-filled message. Please send it to complete your inquiry.');
   };
 
   return (
