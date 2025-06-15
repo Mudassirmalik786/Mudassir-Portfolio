@@ -48,22 +48,22 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="space-y-4">
-              <motion.h1 
-                className="text-4xl md:text-6xl font-bold leading-relaxed"
+              <motion.div 
+                className="space-y-6"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                <div className="space-y-2">
-                  <div className="text-white/90">Hi, I'm</div>
-                  <div className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent font-extrabold">
+                <h1 className="text-4xl md:text-6xl font-bold">
+                  <div className="text-white/90 mb-4">Hi, I'm</div>
+                  <div className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent font-extrabold hero-name">
                     Muhammad Mudassir
                   </div>
-                  <div className="text-2xl md:text-3xl text-accent font-medium mt-4">
-                    Computer Science Student & Developer
-                  </div>
-                </div>
-              </motion.h1>
+                </h1>
+                <h2 className="text-xl md:text-2xl text-accent font-medium">
+                  Computer Science Student & Developer
+                </h2>
+              </motion.div>
               
               <motion.p 
                 className="text-lg md:text-xl text-blue-100/90 font-light max-w-2xl"
