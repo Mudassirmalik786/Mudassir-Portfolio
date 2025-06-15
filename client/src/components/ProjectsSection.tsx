@@ -179,7 +179,7 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
         >
           <a
-            href="https://github.com/mudassir"
+            href="https://github.com/Mudassirmalik786"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-8 py-3 bg-primary hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
