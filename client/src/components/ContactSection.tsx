@@ -82,13 +82,30 @@ const ContactSection = () => {
         }
       }
 
-      // Fallback to mailto if EmailJS fails
-      const mailtoBody = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-      const mailtoLink = `mailto:nm1267704@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${mailtoBody}`;
+      // Fallback: Use Web3Forms - a free form API service
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '',
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          from_name: formData.name,
+          replyto: formData.email,
+        }),
+      });
+
+      const result = await response.json();
       
-      window.open(mailtoLink, '_blank');
-      
-      alert('Opening your email client. Please send the pre-filled email or contact me directly at nm1267704@gmail.com');
+      if (result.success) {
+        alert('Thank you for your message! I will get back to you soon.');
+      } else {
+        throw new Error('Form submission failed');
+      }
       setFormData({
         name: '',
         email: '',
