@@ -47,11 +47,11 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' : 'bg-black/20 backdrop-blur-sm'
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 shadow-md ${
+      isScrolled ? 'bg-white/95 backdrop-blur-md border-b border-gray-200' : 'bg-gray-900/90 backdrop-blur-md border-b border-gray-600'
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
             <button
               onClick={() => handleNavClick('home')}
@@ -63,17 +63,17 @@ const Navigation = () => {
             </button>
           </div>
           
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`transition-colors duration-300 hover:text-primary font-medium px-3 py-2 rounded-md ${
+                className={`transition-all duration-300 font-medium px-4 py-2 rounded-lg border ${
                   activeSection === item.id
-                    ? 'text-primary bg-primary/10'
+                    ? 'text-white bg-gray-700 border-gray-600'
                     : isScrolled
-                    ? 'text-gray-700 hover:bg-gray-100'
-                    : 'text-white hover:bg-white/10'
+                    ? 'text-gray-700 hover:bg-gray-100 border-transparent hover:border-gray-300'
+                    : 'text-white hover:bg-white/20 border-transparent hover:border-white/30'
                 }`}
               >
                 {item.label}
