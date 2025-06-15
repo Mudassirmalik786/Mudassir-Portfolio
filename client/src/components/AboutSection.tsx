@@ -6,10 +6,10 @@ const AboutSection = () => {
   const { isVisible, setElementRef } = useScrollAnimation(0.2);
 
   const quickFacts = [
-    { label: 'CGPA', value: '3.37', icon: 'fas fa-graduation-cap' },
+    { label: 'Years Experience', value: '3+', icon: 'fas fa-calendar-alt' },
     { label: 'Projects', value: '5+', icon: 'fas fa-project-diagram' },
     { label: 'Technologies', value: '15+', icon: 'fas fa-code' },
-    { label: 'Work Experience', value: '3', icon: 'fas fa-briefcase' },
+    { label: 'Internships', value: '3', icon: 'fas fa-briefcase' },
   ];
 
   return (

@@ -101,6 +101,11 @@
     backdrop-filter: blur(10px);
     background: hsla(0, 0%, 100%, 0.95);
   }
+  
+  .navbar-visible {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
 }
 
 @layer utilities {

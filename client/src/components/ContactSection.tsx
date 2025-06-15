@@ -85,44 +85,44 @@ const ContactSection = () => {
               <h3 className="text-2xl font-bold text-dark mb-6">Contact Information</h3>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full flex items-center justify-center">
                     <i className="fas fa-envelope text-primary"></i>
                   </div>
                   <div>
-                    <p className="text-dark font-semibold">Email</p>
+                    <p className="text-gradient font-semibold">Email</p>
                     <p className="text-gray-600">{personalInfo.email}</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
-                    <i className="fas fa-phone text-secondary"></i>
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full flex items-center justify-center">
+                    <i className="fas fa-phone text-primary"></i>
                   </div>
                   <div>
-                    <p className="text-dark font-semibold">Phone</p>
+                    <p className="text-gradient font-semibold">Phone</p>
                     <p className="text-gray-600">{personalInfo.phone}</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full flex items-center justify-center">
                     <i className="fas fa-map-marker-alt text-accent"></i>
                   </div>
                   <div>
-                    <p className="text-dark font-semibold">Location</p>
+                    <p className="text-gradient font-semibold">Location</p>
                     <p className="text-gray-600">Lahore, Pakistan</p>
                   </div>
                 </div>
               </div>
               
               <div className="mt-8 pt-6 border-t border-gray-200">
-                <h4 className="text-lg font-semibold text-dark mb-4">Follow Me</h4>
+                <h4 className="text-lg font-semibold text-gradient mb-4">Follow Me</h4>
                 <div className="flex space-x-4">
                   <a
                     href={personalInfo.linkedIn}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors duration-300"
+                    className="w-10 h-10 bg-gradient-to-r from-primary to-blue-600 text-white rounded-full flex items-center justify-center hover:from-blue-600 hover:to-primary transition-all duration-300 transform hover:scale-110"
                   >
                     <i className="fab fa-linkedin"></i>
                   </a>
@@ -130,7 +130,7 @@ const ContactSection = () => {
                     href={personalInfo.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-dark text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors duration-300"
+                    className="w-10 h-10 bg-gradient-to-r from-gray-800 to-gray-600 text-white rounded-full flex items-center justify-center hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-110"
                   >
                     <i className="fab fa-github"></i>
                   </a>
@@ -138,13 +138,13 @@ const ContactSection = () => {
                     href={personalInfo.hackerrank}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center hover:bg-green-700 transition-colors duration-300"
+                    className="w-10 h-10 bg-gradient-to-r from-accent to-green-500 text-white rounded-full flex items-center justify-center hover:from-green-500 hover:to-accent transition-all duration-300 transform hover:scale-110"
                   >
                     <i className="fab fa-hackerrank"></i>
                   </a>
                   <a
                     href={`mailto:${personalInfo.email}`}
-                    className="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300"
+                    className="w-10 h-10 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full flex items-center justify-center hover:from-red-600 hover:to-red-500 transition-all duration-300 transform hover:scale-110"
                   >
                     <i className="fas fa-envelope"></i>
                   </a>

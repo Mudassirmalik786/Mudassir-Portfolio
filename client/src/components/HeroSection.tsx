@@ -69,7 +69,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                University of Engineering and Technology, Lahore | CGPA: 3.37
+                University of Engineering and Technology, Lahore
               </motion.p>
               
               <motion.p 
