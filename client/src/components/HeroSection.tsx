@@ -55,16 +55,16 @@ const HeroSection = () => {
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
                 <div className="text-white/90 text-xl md:text-2xl mb-2">Hi, I'm</div>
-                <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight mb-4">
+                <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent leading-tight mb-4">
                   Muhammad Mudassir
                 </h1>
-                <h2 className="text-xl md:text-2xl text-accent font-medium">
+                <h2 className="text-xl md:text-2xl text-gray-300 font-medium">
                   Computer Science Student & Developer
                 </h2>
               </motion.div>
               
               <motion.p 
-                className="text-lg md:text-xl text-blue-100/90 font-light max-w-2xl"
+                className="text-lg md:text-xl text-gray-200 font-light max-w-2xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
@@ -73,7 +73,7 @@ const HeroSection = () => {
               </motion.p>
               
               <motion.p 
-                className="text-lg text-blue-200 max-w-2xl leading-relaxed"
+                className="text-lg text-gray-300 max-w-2xl leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}

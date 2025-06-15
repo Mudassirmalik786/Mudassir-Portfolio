@@ -31,20 +31,20 @@ const SkillsSection = () => {
 
   const getColorClass = (color: string) => {
     const colorMap = {
-      primary: 'bg-primary',
-      secondary: 'bg-secondary',
-      accent: 'bg-accent',
+      primary: 'bg-gray-800',
+      secondary: 'bg-gray-600',
+      accent: 'bg-gray-700',
     };
-    return colorMap[color as keyof typeof colorMap] || 'bg-primary';
+    return colorMap[color as keyof typeof colorMap] || 'bg-gray-800';
   };
 
   const getIconBgClass = (color: string) => {
     const colorMap = {
-      primary: 'bg-primary/10 text-primary',
-      secondary: 'bg-secondary/10 text-secondary',
-      accent: 'bg-accent/10 text-accent',
+      primary: 'bg-gray-100 text-gray-800',
+      secondary: 'bg-gray-100 text-gray-600',
+      accent: 'bg-gray-100 text-gray-700',
     };
-    return colorMap[color as keyof typeof colorMap] || 'bg-primary/10 text-primary';
+    return colorMap[color as keyof typeof colorMap] || 'bg-gray-100 text-gray-800';
   };
 
   return (
