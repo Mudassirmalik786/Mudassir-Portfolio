@@ -53,30 +53,42 @@ const ContactSection = () => {
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      console.log('EmailJS Config:', { 
-        serviceId: serviceId ? serviceId : 'Missing', 
-        templateId: templateId ? templateId : 'Missing',
-        publicKey: publicKey ? publicKey.substring(0, 10) + '...' : 'Missing'
-      });
-
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error('EmailJS configuration is incomplete');
+      // First try EmailJS
+      if (serviceId && templateId && publicKey) {
+        try {
+          await emailjs.send(
+            serviceId,
+            templateId,
+            {
+              from_name: formData.name,
+              from_email: formData.email,
+              subject: formData.subject,
+              message: formData.message,
+              to_name: 'Muhammad Mudassir',
+            }
+          );
+          
+          alert('Thank you for your message! I will get back to you soon.');
+          setFormData({
+            name: '',
+            email: '',
+            subject: '',
+            message: '',
+          });
+          setIsSubmitting(false);
+          return;
+        } catch (emailjsError) {
+          console.error('EmailJS failed, falling back to mailto:', emailjsError);
+        }
       }
 
-      // Send email using EmailJS
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_name: 'Muhammad Mudassir',
-        }
-      );
+      // Fallback to mailto if EmailJS fails
+      const mailtoBody = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
+      const mailtoLink = `mailto:nm1267704@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${mailtoBody}`;
       
-      alert('Thank you for your message! I will get back to you soon.');
+      window.open(mailtoLink, '_blank');
+      
+      alert('Opening your email client. Please send the pre-filled email or contact me directly at nm1267704@gmail.com');
       setFormData({
         name: '',
         email: '',
@@ -84,8 +96,8 @@ const ContactSection = () => {
         message: '',
       });
     } catch (error) {
-      console.error('EmailJS error:', error);
-      alert('There was an error sending your message. Please try again or contact me directly.');
+      console.error('Contact form error:', error);
+      alert('Please contact me directly at nm1267704@gmail.com');
     } finally {
       setIsSubmitting(false);
     }
