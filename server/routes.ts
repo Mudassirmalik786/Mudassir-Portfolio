@@ -28,7 +28,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Configure nodemailer (you would use real SMTP settings in production)
-      const transporter = nodemailer.createTransporter({
+      const transporter = nodemailer.createTransport({
         // Configure with your email service
         service: 'gmail', // or your preferred email service
         auth: {
