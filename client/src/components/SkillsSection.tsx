@@ -1,9 +1,35 @@
 import { motion } from 'framer-motion';
-import { useSkillAnimation } from '../hooks/useScrollAnimation';
+import { useEffect, useState } from 'react';
 import { skills } from '../data/portfolioData';
 
 const SkillsSection = () => {
-  const { animateSkills, setSkillsRef } = useSkillAnimation();
+  const [isInView, setIsInView] = useState(false);
+  const [sectionRef, setSectionRef] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!sectionRef) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    observer.observe(sectionRef);
+
+    // Fallback: trigger animation after delay
+    const timer = setTimeout(() => {
+      setIsInView(true);
+    }, 1000);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timer);
+    };
+  }, [sectionRef]);
 
   const skillCategories = {
     languages: skills.filter(skill => skill.category === 'languages'),
@@ -48,7 +74,7 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-white" ref={setSkillsRef}>
+    <section id="skills" className="py-20 bg-white" ref={setSectionRef}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-16"
@@ -99,7 +125,7 @@ const SkillsSection = () => {
                         <motion.div
                           className={`h-full rounded-full ${getColorClass(info.color)} shadow-sm`}
                           initial={{ width: 0 }}
-                          animate={animateSkills ? { width: `${skill.level}%` } : { width: 0 }}
+                          animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
                           transition={{ 
                             duration: 1.2, 
                             delay: (categoryIndex * 0.2) + (skillIndex * 0.08), 
