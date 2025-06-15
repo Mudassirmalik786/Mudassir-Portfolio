@@ -49,34 +49,22 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      const web3formsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-      
-      if (!web3formsKey) {
-        throw new Error('Contact form is not configured');
-      }
-
-      // Use Web3Forms - sends email directly to your inbox
-      const response = await fetch('https://api.web3forms.com/submit', {
+      // Use Formspree - works with all domains including development
+      const response = await fetch('https://formspree.io/f/nm1267704@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: web3formsKey,
           name: formData.name,
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          from_name: formData.name,
-          replyto: formData.email,
         }),
       });
 
-      const result = await response.json();
-      console.log('Web3Forms response:', result);
-      
-      if (result.success) {
+      if (response.ok) {
         alert('Thank you for your message! I will get back to you soon.');
         setFormData({
           name: '',
@@ -85,8 +73,7 @@ const ContactSection = () => {
           message: '',
         });
       } else {
-        console.error('Web3Forms error:', result);
-        throw new Error(`Form submission failed: ${result.message || 'Unknown error'}`);
+        throw new Error('Form submission failed');
       }
     } catch (error) {
       console.error('Contact form error:', error);
