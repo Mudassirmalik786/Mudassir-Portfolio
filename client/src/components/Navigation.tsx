@@ -103,15 +103,15 @@ const Navigation = () => {
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-white/98 backdrop-blur-md shadow-lg border-t border-gray-200 rounded-b-lg">
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-white backdrop-blur-md shadow-lg border-t border-gray-200 rounded-b-lg">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
                 className={`block w-full text-left px-4 py-3 rounded-md transition-colors duration-300 font-medium ${
                   activeSection === item.id
-                    ? 'text-primary bg-primary/10 border-l-4 border-primary'
-                    : 'text-gray-700 hover:text-primary hover:bg-gray-50'
+                    ? 'text-white bg-gray-800 border-l-4 border-gray-600'
+                    : 'text-gray-800 hover:text-white hover:bg-gray-700'
                 }`}
               >
                 {item.label}
