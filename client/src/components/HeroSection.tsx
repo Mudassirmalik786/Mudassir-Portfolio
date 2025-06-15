@@ -54,20 +54,22 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                Hi, I'm <span className="text-accent">Muhammad</span><br />
-                <span className="inline-block">
-                  {displayedText}
-                  <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}>|</span>
+                <span className="text-white/90">Hi, I'm</span><br />
+                <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent font-extrabold">
+                  Muhammad Mudassir
+                </span><br />
+                <span className="text-2xl md:text-3xl text-accent font-medium">
+                  Computer Science Student & Developer
                 </span>
               </motion.h1>
               
               <motion.p 
-                className="text-xl md:text-2xl text-blue-100 font-light"
+                className="text-lg md:text-xl text-blue-100/90 font-light max-w-2xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                {personalInfo.title}
+                University of Engineering and Technology, Lahore | CGPA: 3.37
               </motion.p>
               
               <motion.p 
@@ -88,17 +90,17 @@ const HeroSection = () => {
             >
               <button
                 onClick={() => smoothScrollTo('projects')}
-                className="bg-accent hover:bg-yellow-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                className="bg-accent hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
               >
-                <i className="fas fa-eye mr-2"></i>
-                View My Work
+                <i className="fas fa-code mr-2"></i>
+                View Projects
               </button>
               <button
                 onClick={downloadResume}
-                className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg"
+                className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-xl"
               >
                 <i className="fas fa-download mr-2"></i>
-                Download Resume
+                Download CV
               </button>
             </motion.div>
             
@@ -130,7 +132,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="text-white hover:text-accent transition-colors duration-300 transform hover:scale-110"
               >
-                <i class="fab fa-hackerrank text-2xl"></i>
+                <i className="fab fa-hackerrank text-2xl"></i>
               </a>
               <a
                 href={`mailto:${personalInfo.email}`}

@@ -6,10 +6,10 @@ const AboutSection = () => {
   const { isVisible, setElementRef } = useScrollAnimation(0.2);
 
   const quickFacts = [
-    { label: 'Years Experience', value: '3+', icon: 'fas fa-calendar-alt' },
-    { label: 'Projects Completed', value: '15+', icon: 'fas fa-project-diagram' },
-    { label: 'Technologies', value: '12+', icon: 'fas fa-code' },
-    { label: 'Internships', value: '3', icon: 'fas fa-briefcase' },
+    { label: 'CGPA', value: '3.37', icon: 'fas fa-graduation-cap' },
+    { label: 'Projects', value: '5+', icon: 'fas fa-project-diagram' },
+    { label: 'Technologies', value: '15+', icon: 'fas fa-code' },
+    { label: 'Work Experience', value: '3', icon: 'fas fa-briefcase' },
   ];
 
   return (
@@ -24,8 +24,8 @@ const AboutSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">About Me</h2>
           <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A passionate Computer Science student with hands-on experience in full-stack development 
-            and a strong foundation in modern web technologies.
+            Computer Science student at UET Lahore with proven expertise in full-stack development, 
+            machine learning, and software engineering through multiple internships and real-world projects.
           </p>
         </motion.div>
         

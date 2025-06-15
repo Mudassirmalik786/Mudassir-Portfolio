@@ -45,31 +45,33 @@ export interface Certification {
 
 export const skills: Skill[] = [
   // Programming Languages
+  { name: 'C', level: 85, category: 'languages' },
+  { name: 'C++', level: 80, category: 'languages' },
+  { name: 'C#', level: 85, category: 'languages' },
+  { name: 'Python', level: 90, category: 'languages' },
   { name: 'JavaScript', level: 90, category: 'languages' },
-  { name: 'Python', level: 85, category: 'languages' },
-  { name: 'C#', level: 80, category: 'languages' },
-  { name: 'C++', level: 75, category: 'languages' },
-  { name: 'SQL', level: 85, category: 'languages' },
   { name: 'HTML5', level: 95, category: 'languages' },
   { name: 'CSS3', level: 90, category: 'languages' },
-  { name: 'PHP', level: 70, category: 'languages' },
+  { name: 'PHP', level: 75, category: 'languages' },
+  { name: 'SQL', level: 85, category: 'languages' },
 
   // Frameworks & Libraries
+  { name: '.NET Framework', level: 85, category: 'frameworks' },
   { name: 'React', level: 90, category: 'frameworks' },
-  { name: '.NET', level: 80, category: 'frameworks' },
-  { name: 'Django', level: 75, category: 'frameworks' },
-  { name: 'NUXT', level: 70, category: 'frameworks' },
+  { name: 'Django', level: 80, category: 'frameworks' },
+  { name: 'NUXT', level: 75, category: 'frameworks' },
   { name: 'Node.js', level: 85, category: 'frameworks' },
-  { name: 'Express', level: 80, category: 'frameworks' },
 
-  // Tools & Databases
+  // Tools & Platforms
+  { name: 'Visual Studio Code', level: 95, category: 'tools' },
+  { name: 'MS SQL Server', level: 85, category: 'tools' },
   { name: 'MySQL', level: 85, category: 'tools' },
   { name: 'MongoDB', level: 80, category: 'tools' },
-  { name: 'SQL Server', level: 85, category: 'tools' },
-  { name: 'VS Code', level: 95, category: 'tools' },
-  { name: 'Git', level: 85, category: 'tools' },
-  { name: 'XAMPP', level: 80, category: 'tools' },
-  { name: 'Power BI', level: 75, category: 'tools' },
+  { name: 'PHPMyAdmin', level: 80, category: 'tools' },
+  { name: 'MS Power BI', level: 75, category: 'tools' },
+  { name: 'EdrawMax', level: 70, category: 'tools' },
+  { name: 'XAMPP', level: 85, category: 'tools' },
+  { name: 'Overleaf LaTeX', level: 70, category: 'tools' },
 ];
 
 export const projects: Project[] = [
@@ -215,13 +217,15 @@ export const certifications: Certification[] = [
 
 export const personalInfo = {
   name: 'Muhammad Mudassir',
-  title: 'Full Stack Developer & Computer Science Student',
+  title: 'BS Computer Science Student | Tech Enthusiast',
   email: 'mudassirnaveed303@gmail.com',
-  phone: '+92 309 9603075',
+  phone: '+923099603075',
   location: '3A/19 Jinnah Park Sultan Pura G.T. Road Lahore',
   linkedIn: 'https://linkedin.com/in/mudassir',
   github: 'https://github.com/mudassir',
   hackerrank: 'https://hackerrank.com/mudassir',
-  bio: 'Passionate about creating innovative web solutions and exploring the endless possibilities of technology. Currently pursuing my BS in Computer Science while building real-world applications.',
+  bio: 'Passionate Computer Science student with 3+ years of hands-on experience in web development and modern technologies. Committed to creating innovative solutions that bridge the gap between design and functionality.',
   profileImage: '@assets/Mudassir-removebg-preview_1750000650615.jpg',
+  cgpa: '3.37',
+  university: 'University of Engineering and Technology, Lahore',
 };

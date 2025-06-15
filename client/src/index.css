@@ -4,27 +4,31 @@
 
 :root {
   --background: hsl(0, 0%, 100%);
-  --foreground: hsl(224, 71%, 4%);
-  --muted: hsl(220, 14%, 96%);
-  --muted-foreground: hsl(220, 9%, 46%);
+  --foreground: hsl(210, 12%, 16%);
+  --muted: hsl(210, 16%, 98%);
+  --muted-foreground: hsl(215, 16%, 47%);
   --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(224, 71%, 4%);
+  --popover-foreground: hsl(210, 12%, 16%);
   --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(224, 71%, 4%);
-  --border: hsl(220, 13%, 91%);
-  --input: hsl(220, 13%, 91%);
-  --primary: hsl(221, 83%, 53%);
-  --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(217, 91%, 60%);
-  --secondary-foreground: hsl(222, 84%, 5%);
-  --accent: hsl(43, 96%, 56%);
-  --accent-foreground: hsl(222, 84%, 5%);
+  --card-foreground: hsl(210, 12%, 16%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --primary: hsl(210, 100%, 56%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(212, 33%, 89%);
+  --secondary-foreground: hsl(210, 12%, 16%);
+  --accent: hsl(142, 76%, 36%);
+  --accent-foreground: hsl(0, 0%, 100%);
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(210, 40%, 98%);
-  --ring: hsl(221, 83%, 53%);
+  --ring: hsl(210, 100%, 56%);
   --radius: 0.75rem;
-  --dark: hsl(220, 26%, 14%);
-  --light: hsl(220, 14%, 96%);
+  --dark: hsl(210, 29%, 24%);
+  --light: hsl(210, 16%, 98%);
+  --professional-blue: hsl(210, 100%, 56%);
+  --professional-dark: hsl(210, 29%, 24%);
+  --professional-green: hsl(142, 76%, 36%);
+  --professional-gray: hsl(215, 16%, 47%);
 }
 
 .dark {
@@ -66,7 +70,7 @@
 
 @layer components {
   .gradient-bg {
-    background: linear-gradient(135deg, hsl(221, 83%, 53%) 0%, hsl(217, 91%, 60%) 100%);
+    background: linear-gradient(135deg, hsl(210, 100%, 56%) 0%, hsl(210, 29%, 24%) 100%);
   }
   
   .card-shadow {
