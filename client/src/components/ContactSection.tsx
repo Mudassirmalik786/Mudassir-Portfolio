@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
@@ -21,6 +21,14 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Initialize EmailJS
+  useEffect(() => {
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    if (publicKey) {
+      emailjs.init(publicKey);
+    }
+  }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -41,18 +49,31 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      console.log('EmailJS Config:', { 
+        serviceId: serviceId ? 'Set' : 'Missing', 
+        templateId: templateId ? 'Set' : 'Missing',
+        publicKey: publicKey ? 'Set' : 'Missing'
+      });
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is incomplete');
+      }
+
       // Send email using EmailJS
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id',
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
           to_name: 'Muhammad Mudassir',
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key'
+        }
       );
       
       alert('Thank you for your message! I will get back to you soon.');
