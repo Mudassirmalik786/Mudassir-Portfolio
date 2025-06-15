@@ -23,8 +23,8 @@ const SkillsSection = () => {
       color: 'secondary',
     },
     tools: {
-      title: 'Tools & Databases',
-      icon: 'fas fa-database',
+      title: 'Tools & Platforms',
+      icon: 'fas fa-tools',
       color: 'accent',
     },
   };
@@ -56,8 +56,8 @@ const SkillsSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">Skills & Expertise</h2>
-          <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-4">Skills & Expertise</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Proficient in modern web technologies and programming languages with hands-on project experience.
           </p>

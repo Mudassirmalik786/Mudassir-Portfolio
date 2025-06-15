@@ -17,8 +17,8 @@ const ProjectsSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">Featured Projects</h2>
-          <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-4">Featured Projects</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             A collection of projects showcasing my skills in full-stack development, data science, and software engineering.
           </p>
