@@ -49,47 +49,21 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-      // First try EmailJS
-      if (serviceId && templateId && publicKey) {
-        try {
-          await emailjs.send(
-            serviceId,
-            templateId,
-            {
-              from_name: formData.name,
-              from_email: formData.email,
-              subject: formData.subject,
-              message: formData.message,
-              to_name: 'Muhammad Mudassir',
-            }
-          );
-          
-          alert('Thank you for your message! I will get back to you soon.');
-          setFormData({
-            name: '',
-            email: '',
-            subject: '',
-            message: '',
-          });
-          setIsSubmitting(false);
-          return;
-        } catch (emailjsError) {
-          console.error('EmailJS failed, falling back to mailto:', emailjsError);
-        }
+      const web3formsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      
+      if (!web3formsKey) {
+        throw new Error('Contact form is not configured');
       }
 
-      // Fallback: Use Web3Forms - a free form API service
+      // Use Web3Forms - sends email directly to your inbox
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '',
+          access_key: web3formsKey,
           name: formData.name,
           email: formData.email,
           subject: formData.subject,
@@ -100,21 +74,23 @@ const ContactSection = () => {
       });
 
       const result = await response.json();
+      console.log('Web3Forms response:', result);
       
       if (result.success) {
         alert('Thank you for your message! I will get back to you soon.');
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
       } else {
-        throw new Error('Form submission failed');
+        console.error('Web3Forms error:', result);
+        throw new Error(`Form submission failed: ${result.message || 'Unknown error'}`);
       }
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
     } catch (error) {
       console.error('Contact form error:', error);
-      alert('Please contact me directly at nm1267704@gmail.com');
+      alert('There was an error sending your message. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
