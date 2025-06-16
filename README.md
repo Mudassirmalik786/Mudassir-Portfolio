@@ -47,5 +47,5 @@ The built files will be in the `dist` directory.
 ## Contact
 
 - Email: mudassirnaveed303@gmail.com
-- GitHub: [Your GitHub Profile]
-- LinkedIn: [Your LinkedIn Profile]
+- GitHub: https://github.com/Mudassirmalik786
+- LinkedIn: https://www.linkedin.com/in/muhammad-mudassir-870b8a261/
