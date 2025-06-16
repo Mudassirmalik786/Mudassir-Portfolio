@@ -1,5 +1,6 @@
 {
-  "buildCommand": "node build.js",
-  "outputDirectory": "dist",
+  "version": 2,
+  "buildCommand": "vite build",
+  "outputDirectory": "client/dist",
   "installCommand": "npm install"
 }
