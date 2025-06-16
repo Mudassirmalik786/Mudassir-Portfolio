@@ -88,29 +88,37 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Use EmailJS for client-side email sending
-      const emailJSData = {
-        from_name: formData.name,
-        from_email: formData.email,
+      // Use Web3Forms - much more reliable for static deployments
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+      if (!accessKey) {
+        alert('Contact form is not properly configured. Please try again later.');
+        return;
+      }
+
+      const formDataToSend = {
+        access_key: accessKey,
+        name: formData.name,
+        email: formData.email,
         subject: formData.subject,
         message: formData.message,
+        from_name: formData.name,
+        from_email: formData.email,
         to_email: 'mudassirnaveed303@gmail.com'
       };
 
-      // Load EmailJS dynamically
-      const emailjs = await import('@emailjs/browser');
-      
-      // Initialize EmailJS
-      emailjs.default.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-      
-      // Send email
-      const result = await emailjs.default.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        emailJSData
-      );
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formDataToSend)
+      });
 
-      if (result.status === 200) {
+      const result = await response.json();
+
+      if (result.success) {
         setShowSuccess(true);
         setFormData({
           name: '',
@@ -122,11 +130,12 @@ const ContactSection = () => {
         // Hide success message after 5 seconds
         setTimeout(() => setShowSuccess(false), 5000);
       } else {
+        console.error('Web3Forms error:', result);
         alert('Failed to send message. Please try again.');
       }
     } catch (error) {
       console.error('Contact form error:', error);
-      alert('There was an error sending your message. Please check your internet connection and try again.');
+      alert('Network error occurred. Please check your internet connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
