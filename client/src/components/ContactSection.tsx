@@ -91,8 +91,16 @@ const ContactSection = () => {
       // Use Web3Forms - much more reliable for static deployments
       const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
+      console.log('Environment check:', {
+        hasAccessKey: !!accessKey,
+        accessKeyLength: accessKey ? accessKey.length : 0,
+        allEnvVars: Object.keys(import.meta.env).filter(key => key.startsWith('VITE_'))
+      });
+
       if (!accessKey) {
-        alert('Contact form is not properly configured. Please try again later.');
+        console.error('Web3Forms access key is missing');
+        console.error('Available environment variables:', Object.keys(import.meta.env).filter(key => key.startsWith('VITE_')));
+        alert('Contact form is not properly configured. Environment variables may not be available.');
         return;
       }
 
@@ -118,6 +126,9 @@ const ContactSection = () => {
 
       const result = await response.json();
 
+      console.log('Web3Forms response:', result);
+      console.log('Response status:', response.status);
+
       if (result.success) {
         setShowSuccess(true);
         setFormData({
@@ -131,7 +142,8 @@ const ContactSection = () => {
         setTimeout(() => setShowSuccess(false), 5000);
       } else {
         console.error('Web3Forms error:', result);
-        alert('Failed to send message. Please try again.');
+        console.error('Full response:', { status: response.status, result });
+        alert(`Failed to send message: ${result.message || 'Please try again.'}`);
       }
     } catch (error) {
       console.error('Contact form error:', error);
