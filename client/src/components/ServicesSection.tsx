@@ -6,45 +6,45 @@ const ServicesSection = () => {
 
   const services = [
     {
-      icon: 'fas fa-code',
-      title: 'Web Development',
-      description: 'Full-stack web applications using modern technologies like React, Node.js, and databases. Responsive design ensuring optimal performance across all devices.',
-      features: ['Frontend Development', 'Backend Development', 'Database Design', 'API Integration'],
+      icon: 'fas fa-robot',
+      title: 'Machine Learning & Data Science',
+      description: 'Develop predictive models and data analysis solutions using Python. Specialized in price prediction, data visualization, and statistical modeling with libraries like Pandas, NumPy, and Scikit-Learn.',
+      features: ['Price Prediction Models', 'Data Visualization (Matplotlib, Seaborn)', 'Feature Engineering', 'Statistical Analysis'],
       gradient: 'from-blue-500 to-purple-600'
     },
     {
-      icon: 'fas fa-mobile-alt',
-      title: 'Responsive Design',
-      description: 'Mobile-first approach creating seamless user experiences. Optimized for all screen sizes from smartphones to desktop displays.',
-      features: ['Mobile Optimization', 'Cross-browser Testing', 'Performance Optimization', 'User Experience Design'],
+      icon: 'fas fa-globe',
+      title: 'Full-Stack Web Development',
+      description: 'Complete web applications using React, Node.js, and Express. From e-commerce platforms to management systems with modern UI/UX and robust backend architecture.',
+      features: ['React Frontend Development', 'Node.js & Express Backend', 'Drizzle ORM Database', 'React Query & Hook Form'],
       gradient: 'from-green-500 to-teal-600'
     },
     {
-      icon: 'fas fa-database',
-      title: 'Database Solutions',
-      description: 'Design and implement efficient database architectures. Data modeling, optimization, and integration with web applications.',
-      features: ['Database Design', 'Data Modeling', 'Query Optimization', 'Data Migration'],
+      icon: 'fas fa-desktop',
+      title: 'Desktop Application Development',
+      description: 'Enterprise-level desktop applications using C# .NET Framework. University management systems, business applications with SQL Server integration and comprehensive user interfaces.',
+      features: ['C# .NET Applications', 'SQL Server Integration', 'Enterprise Solutions', 'Database Management Systems'],
       gradient: 'from-orange-500 to-red-600'
     },
     {
-      icon: 'fas fa-cogs',
-      title: 'API Development',
-      description: 'RESTful API development and third-party integrations. Secure, scalable, and well-documented endpoints for seamless data exchange.',
-      features: ['REST API Design', 'Authentication', 'Documentation', 'Testing & Debugging'],
+      icon: 'fas fa-spider',
+      title: 'Web Scraping & Data Extraction',
+      description: 'Advanced Python web scraping solutions for data collection and automation. Extract structured data from websites with efficient algorithms and data processing capabilities.',
+      features: ['Python Web Scraping', 'Data Processing & Cleaning', 'Automation Scripts', 'API Data Integration'],
       gradient: 'from-purple-500 to-pink-600'
     },
     {
-      icon: 'fas fa-chart-line',
-      title: 'Performance Optimization',
-      description: 'Optimize web applications for speed and efficiency. Code analysis, performance monitoring, and implementation of best practices.',
-      features: ['Code Optimization', 'Load Time Reduction', 'SEO Optimization', 'Analytics Integration'],
+      icon: 'fas fa-database',
+      title: 'Database Design & Management',
+      description: 'Comprehensive database solutions using SQL Server, MySQL, and MongoDB. Design efficient schemas, optimize queries, and implement data management systems.',
+      features: ['SQL Server & MySQL', 'MongoDB NoSQL', 'Database Schema Design', 'Query Optimization'],
       gradient: 'from-indigo-500 to-blue-600'
     },
     {
-      icon: 'fas fa-graduation-cap',
-      title: 'Consulting & Training',
-      description: 'Technical consultation and training services. Code reviews, architecture planning, and knowledge transfer sessions.',
-      features: ['Code Review', 'Technical Consultation', 'Training Sessions', 'Best Practices'],
+      icon: 'fas fa-tools',
+      title: 'Python Application Development',
+      description: 'Custom Python applications with Qt Designer interfaces. Restaurant management systems, data processing tools, and desktop applications with modern GUI frameworks.',
+      features: ['Python Qt Applications', 'GUI Development', 'Data Structures & Algorithms', 'System Architecture'],
       gradient: 'from-teal-500 to-green-600'
     }
   ];
